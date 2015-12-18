@@ -51,7 +51,7 @@
     __block id blockResponseObject = nil;
     __block id blockError = nil;
 
-    XCTestExpectation *expectation = [self expectationWithDescription:@"Request should succeed"];
+    __weak XCTestExpectation *expectation = [self expectationWithDescription:@"Request should succeed"];
 
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"/get" relativeToURL:self.baseURL]];
     NSURLSessionDataTask *task = [self.manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
@@ -72,7 +72,7 @@
 - (void)testThatOperationInvokesFailureCompletionBlockWithErrorOnFailure {
     __block id blockError = nil;
 
-    XCTestExpectation *expectation = [self expectationWithDescription:@"Request should succeed"];
+    __weak XCTestExpectation *expectation = [self expectationWithDescription:@"Request should succeed"];
 
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"/status/404" relativeToURL:self.baseURL]];
     NSURLSessionDataTask *task = [self.manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
@@ -92,7 +92,7 @@
     __block BOOL success;
     __block NSError *blockError = nil;
 
-    XCTestExpectation *expectation = [self expectationWithDescription:@"Request should succeed"];
+    __weak XCTestExpectation *expectation = [self expectationWithDescription:@"Request should succeed"];
 
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"/redirect/1" relativeToURL:self.baseURL]];
     NSURLSessionDataTask *task = [self.manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
@@ -121,7 +121,7 @@
     __block BOOL managerDownloadFinishedBlockExecuted = NO;
     __block BOOL completionBlockExecuted = NO;
     __block NSURL *downloadFilePath = nil;
-    XCTestExpectation *expectation = [self expectationWithDescription:@"Request should succeed"];
+    __weak XCTestExpectation *expectation = [self expectationWithDescription:@"Request should succeed"];
 
     [self.manager setDownloadTaskDidFinishDownloadingBlock:^NSURL *(NSURLSession *session, NSURLSessionDownloadTask *downloadTask, NSURL *location) {
         managerDownloadFinishedBlockExecuted = YES;
@@ -150,7 +150,7 @@
     __block BOOL destinationBlockExecuted = NO;
     __block BOOL completionBlockExecuted = NO;
     __block NSURL *downloadFilePath = nil;
-    XCTestExpectation *expectation = [self expectationWithDescription:@"Request should succeed"];
+    __weak XCTestExpectation *expectation = [self expectationWithDescription:@"Request should succeed"];
 
     NSURLSessionDownloadTask *downloadTask = [self.manager downloadTaskWithRequest:[NSURLRequest requestWithURL:self.baseURL]
                                                                           progress:nil
@@ -172,7 +172,7 @@
 }
 
 - (void)testThatSerializationErrorGeneratesErrorAndNullTaskForGET {
-    XCTestExpectation *expectation = [self expectationWithDescription:@"Serialization should fail"];
+    __weak XCTestExpectation *expectation = [self expectationWithDescription:@"Serialization should fail"];
 
     [self.manager.requestSerializer setQueryStringSerializationWithBlock:^NSString * _Nonnull(NSURLRequest * _Nonnull request, id  _Nonnull parameters, NSError * _Nullable __autoreleasing * _Nullable error) {
         *error = [NSError errorWithDomain:@"Custom" code:-1 userInfo:nil];
@@ -225,7 +225,7 @@
 #pragma mark - Progress
 
 - (void)testDownloadProgressIsReportedForGET {
-    XCTestExpectation *expectation = [self expectationWithDescription:@"Progress Should equal 1.0"];
+    __weak XCTestExpectation *expectation = [self expectationWithDescription:@"Progress Should equal 1.0"];
     [self.manager
      GET:@"image"
      parameters:nil
@@ -289,7 +289,7 @@
 # pragma mark - HTTP Status Codes
 
 - (void)testThatSuccessBlockIsCalledFor200 {
-    XCTestExpectation *expectation = [self expectationWithDescription:@"Request should succeed"];
+    __weak XCTestExpectation *expectation = [self expectationWithDescription:@"Request should succeed"];
     [self.manager
      GET:@"status/200"
      parameters:nil
@@ -302,7 +302,7 @@
 }
 
 - (void)testThatFailureBlockIsCalledFor404 {
-    XCTestExpectation *expectation = [self expectationWithDescription:@"Request should succeed"];
+    __weak XCTestExpectation *expectation = [self expectationWithDescription:@"Request should succeed"];
     [self.manager
      GET:@"status/404"
      parameters:nil
@@ -316,7 +316,7 @@
 
 - (void)testThatResponseObjectIsEmptyFor204 {
     __block id urlResponseObject = nil;
-    XCTestExpectation *expectation = [self expectationWithDescription:@"Request should succeed"];
+    __weak XCTestExpectation *expectation = [self expectationWithDescription:@"Request should succeed"];
     [self.manager
      GET:@"status/204"
      parameters:nil
@@ -333,7 +333,7 @@
 #pragma mark - Rest Interface 
 
 - (void)testGET {
-    XCTestExpectation *expectation = [self expectationWithDescription:@"Request should succeed"];
+    __weak XCTestExpectation *expectation = [self expectationWithDescription:@"Request should succeed"];
     [self.manager
      GET:@"get"
      parameters:nil
@@ -347,7 +347,7 @@
 }
 
 - (void)testHEAD {
-    XCTestExpectation *expectation = [self expectationWithDescription:@"Request should succeed"];
+    __weak XCTestExpectation *expectation = [self expectationWithDescription:@"Request should succeed"];
     [self.manager
      HEAD:@"get"
      parameters:nil
@@ -360,7 +360,7 @@
 }
 
 - (void)testPOST {
-    XCTestExpectation *expectation = [self expectationWithDescription:@"Request should succeed"];
+    __weak XCTestExpectation *expectation = [self expectationWithDescription:@"Request should succeed"];
     [self.manager
      POST:@"post"
      parameters:@{@"key":@"value"}
@@ -374,7 +374,7 @@
 }
 
 - (void)testPOSTWithConstructingBody {
-    XCTestExpectation *expectation = [self expectationWithDescription:@"Request should succeed"];
+    __weak XCTestExpectation *expectation = [self expectationWithDescription:@"Request should succeed"];
     [self.manager
      POST:@"post"
      parameters:@{@"key":@"value"}
@@ -395,7 +395,7 @@
 }
 
 - (void)testPUT {
-    XCTestExpectation *expectation = [self expectationWithDescription:@"Request should succeed"];
+    __weak XCTestExpectation *expectation = [self expectationWithDescription:@"Request should succeed"];
     [self.manager
      PUT:@"put"
      parameters:@{@"key":@"value"}
@@ -408,7 +408,7 @@
 }
 
 - (void)testDELETE {
-    XCTestExpectation *expectation = [self expectationWithDescription:@"Request should succeed"];
+    __weak XCTestExpectation *expectation = [self expectationWithDescription:@"Request should succeed"];
     [self.manager
      DELETE:@"delete"
      parameters:@{@"key":@"value"}
@@ -421,7 +421,7 @@
 }
 
 - (void)testPATCH {
-    XCTestExpectation *expectation = [self expectationWithDescription:@"Request should succeed"];
+    __weak XCTestExpectation *expectation = [self expectationWithDescription:@"Request should succeed"];
     [self.manager
      PATCH:@"patch"
      parameters:@{@"key":@"value"}
@@ -437,7 +437,7 @@
 #pragma mark - Deprecated Rest Interface
 
 - (void)testDeprecatedGET {
-    XCTestExpectation *expectation = [self expectationWithDescription:@"Request should succeed"];
+    __weak XCTestExpectation *expectation = [self expectationWithDescription:@"Request should succeed"];
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
     [self.manager
@@ -453,7 +453,7 @@
 }
 
 - (void)testDeprecatedPOST {
-    XCTestExpectation *expectation = [self expectationWithDescription:@"Request should succeed"];
+    __weak XCTestExpectation *expectation = [self expectationWithDescription:@"Request should succeed"];
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
     [self.manager
@@ -469,7 +469,7 @@
 }
 
 - (void)testDeprecatedPOSTWithConstructingBody {
-    XCTestExpectation *expectation = [self expectationWithDescription:@"Request should succeed"];
+    __weak XCTestExpectation *expectation = [self expectationWithDescription:@"Request should succeed"];
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
     [self.manager

@@ -182,7 +182,7 @@
     dispatch_queue_t serial_queue = dispatch_queue_create("com.alamofire.networking.test.RDAR17029580", DISPATCH_QUEUE_SERIAL);
     NSMutableArray *taskIDs = [[NSMutableArray alloc] init];
     for (NSInteger i = 0; i < 100; i++) {
-        XCTestExpectation *expectation = [self expectationWithDescription:@"Wait for task creation"];
+        __weak XCTestExpectation *expectation = [self expectationWithDescription:@"Wait for task creation"];
         __block NSURLSessionTask *task;
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             task = [self.localManager
