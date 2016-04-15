@@ -176,6 +176,10 @@
 		29D96E991BCC406B00F571A5 /* UIImageView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 299522931BBF13C700859F49 /* UIImageView+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		29D96E9A1BCC406B00F571A5 /* UIProgressView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 299522961BBF13C700859F49 /* UIProgressView+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		29F5EF031C47E64F008B976A /* AFUIWebViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 29F5EF021C47E64F008B976A /* AFUIWebViewTests.m */; };
+		4FA851291CC0F1910099D68D /* UUNetworkSession.h in Headers */ = {isa = PBXBuildFile; fileRef = 4FA851251CC0F1910099D68D /* UUNetworkSession.h */; };
+		4FA8512A1CC0F1910099D68D /* UUNetworkSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FA851261CC0F1910099D68D /* UUNetworkSession.m */; };
+		4FA8512B1CC0F1910099D68D /* UUTokenNetwork.h in Headers */ = {isa = PBXBuildFile; fileRef = 4FA851271CC0F1910099D68D /* UUTokenNetwork.h */; };
+		4FA8512C1CC0F1910099D68D /* UUTokenNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FA851281CC0F1910099D68D /* UUTokenNetwork.m */; };
 		5F4323BB1BF63741003B8749 /* Equifax_Secure_Certificate_Authority_Root.cer in Resources */ = {isa = PBXBuildFile; fileRef = 5F4323B31BF63741003B8749 /* Equifax_Secure_Certificate_Authority_Root.cer */; };
 		5F4323BC1BF63741003B8749 /* Equifax_Secure_Certificate_Authority_Root.cer in Resources */ = {isa = PBXBuildFile; fileRef = 5F4323B31BF63741003B8749 /* Equifax_Secure_Certificate_Authority_Root.cer */; };
 		5F4323BD1BF63741003B8749 /* Equifax_Secure_Certificate_Authority_Root.cer in Resources */ = {isa = PBXBuildFile; fileRef = 5F4323B31BF63741003B8749 /* Equifax_Secure_Certificate_Authority_Root.cer */; };
@@ -298,6 +302,10 @@
 		2995229B1BBF13C700859F49 /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
 		29D3413E1C20D46400A7D266 /* AFCompoundResponseSerializerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFCompoundResponseSerializerTests.m; sourceTree = "<group>"; };
 		29F5EF021C47E64F008B976A /* AFUIWebViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFUIWebViewTests.m; sourceTree = "<group>"; };
+		4FA851251CC0F1910099D68D /* UUNetworkSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUNetworkSession.h; sourceTree = "<group>"; };
+		4FA851261CC0F1910099D68D /* UUNetworkSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUNetworkSession.m; sourceTree = "<group>"; };
+		4FA851271CC0F1910099D68D /* UUTokenNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUTokenNetwork.h; sourceTree = "<group>"; };
+		4FA851281CC0F1910099D68D /* UUTokenNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUTokenNetwork.m; sourceTree = "<group>"; };
 		5F4323B31BF63741003B8749 /* Equifax_Secure_Certificate_Authority_Root.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = Equifax_Secure_Certificate_Authority_Root.cer; sourceTree = "<group>"; };
 		5F4323B41BF63741003B8749 /* GeoTrust_Global_CA-cross.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GeoTrust_Global_CA-cross.cer"; sourceTree = "<group>"; };
 		5F4323B51BF63741003B8749 /* google.com.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = google.com.cer; sourceTree = "<group>"; };
@@ -463,6 +471,7 @@
 		2995222F1BBF104D00859F49 = {
 			isa = PBXGroup;
 			children = (
+				4FA851241CC0F1890099D68D /* UUNetworkSession */,
 				299522451BBF125A00859F49 /* AFNetworking */,
 				299522851BBF13C700859F49 /* UIKit+AFNetworking */,
 				2995223B1BBF104D00859F49 /* Supporting Files */,
@@ -544,6 +553,17 @@
 			path = "UIKit+AFNetworking";
 			sourceTree = "<group>";
 		};
+		4FA851241CC0F1890099D68D /* UUNetworkSession */ = {
+			isa = PBXGroup;
+			children = (
+				4FA851251CC0F1910099D68D /* UUNetworkSession.h */,
+				4FA851261CC0F1910099D68D /* UUNetworkSession.m */,
+				4FA851271CC0F1910099D68D /* UUTokenNetwork.h */,
+				4FA851281CC0F1910099D68D /* UUTokenNetwork.m */,
+			);
+			path = UUNetworkSession;
+			sourceTree = "<group>";
+		};
 		5F4323B21BF63741003B8749 /* Google.com */ = {
 			isa = PBXGroup;
 			children = (
@@ -599,7 +619,9 @@
 				299522A21BBF13C700859F49 /* UIActivityIndicatorView+AFNetworking.h in Headers */,
 				2995223D1BBF104D00859F49 /* AFNetworking.h in Headers */,
 				299522B01BBF13C700859F49 /* UIWebView+AFNetworking.h in Headers */,
+				4FA8512B1CC0F1910099D68D /* UUTokenNetwork.h in Headers */,
 				299522AC1BBF13C700859F49 /* UIProgressView+AFNetworking.h in Headers */,
+				4FA851291CC0F1910099D68D /* UUNetworkSession.h in Headers */,
 				299522A61BBF13C700859F49 /* UIButton+AFNetworking.h in Headers */,
 				299522A01BBF13C700859F49 /* AFNetworkActivityIndicatorManager.h in Headers */,
 				299522AE1BBF13C700859F49 /* UIRefreshControl+AFNetworking.h in Headers */,
@@ -1024,6 +1046,8 @@
 				299522AF1BBF13C700859F49 /* UIRefreshControl+AFNetworking.m in Sources */,
 				299522AA1BBF13C700859F49 /* UIImageView+AFNetworking.m in Sources */,
 				299522B11BBF13C700859F49 /* UIWebView+AFNetworking.m in Sources */,
+				4FA8512A1CC0F1910099D68D /* UUNetworkSession.m in Sources */,
+				4FA8512C1CC0F1910099D68D /* UUTokenNetwork.m in Sources */,
 				299522591BBF125A00859F49 /* AFSecurityPolicy.m in Sources */,
 				299522A71BBF13C700859F49 /* UIButton+AFNetworking.m in Sources */,
 				299522541BBF125A00859F49 /* AFHTTPSessionManager.m in Sources */,
